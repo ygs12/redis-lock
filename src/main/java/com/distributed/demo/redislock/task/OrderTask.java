@@ -12,8 +12,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class OrderTask {
 
-    //@Scheduled(cron = "0 */1 * * * ?")
-    @Scheduled(cron = "0/20 * * * * ?")
+    @Scheduled(cron = "0 */1 * * * ?")
+    //@Scheduled(cron = "0/20 * * * * ?")
     public void closeOrderTask() throws Exception {
         System.out.println("================");
     }
