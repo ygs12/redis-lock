@@ -1,8 +1,9 @@
 package com.distributed.demo.redislock.task;
 
-import com.distributed.demo.redislock.utils.PropertiesUtil;
+import com.distributed.demo.redislock.service.OrderService;
 import com.distributed.demo.redislock.utils.RedisPoolUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -16,37 +17,37 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class OrderTask {
 
-    public static final String REDIS_LOCK = "redis_lock";
+    // 定义Redis锁名
+    public static final String REDIS_ORDER_LOCK = "redis_order_lock";
+    // 定义redis的key超时时间
+    public static final Long timeOut = 50000L;
 
-    @Scheduled(cron = "0 */1 * * * ?")
-    //@Scheduled(cron = "0/20 * * * * ?")
-    public void closeOrderTask() throws Exception {
-        System.out.println("================");
-        long timeout = Long.parseLong(PropertiesUtil.getProperty("lock.time"));
-        Long result = RedisPoolUtil.setnx(REDIS_LOCK, String.valueOf(System.currentTimeMillis() + timeout));
-        if (result != null && result.intValue()==1) {
-            // 执行关闭订单的业务
-            closeOrder(REDIS_LOCK);
+    @Autowired
+    private OrderService orderService;
+
+    @Scheduled(cron="0/1 * * * * ?")
+    public void doTask() {
+        System.out.println("执行订单关闭任务开始");
+        Long result = RedisPoolUtil.setnx(REDIS_ORDER_LOCK, String.valueOf(System.currentTimeMillis() + timeOut));
+        if (result != null && result.intValue() ==1) {
+            // 执行关闭订单业务操作
+            closeOrderTask(REDIS_ORDER_LOCK);
         } else {
-            log.info("没有获取到了分布式锁{}", REDIS_LOCK);
+            log.info("没有获取到锁{}", REDIS_ORDER_LOCK);
         }
-    }
 
-    private void closeOrder(String redisLock) {
-        log.info("获取{},ThreadName:{}",REDIS_LOCK,Thread.currentThread().getName());
-        // 设置过期时间
-        RedisPoolUtil.expire(REDIS_LOCK, 50);
-        // 执行关闭业务
-        close();
-        // 释放锁
-        RedisPoolUtil.del(REDIS_LOCK);
-        log.info("释放{},ThreadName:{}",REDIS_LOCK,Thread.currentThread().getName());
+        System.out.println("执行订单关闭任务结束");
     }
 
 
-    public void close() {
-        System.out.println("执行了关闭订单操作");
+    private void closeOrderTask(String redisOrderLock) {
+        log.info("获取到锁{}", REDIS_ORDER_LOCK);
+        // 为了避免死锁问题，设置锁的过期时间
+        RedisPoolUtil.expire(redisOrderLock, 50);
+        // 执行业务操作
+        orderService.closeOrder();
+        log.info("释放锁{}", REDIS_ORDER_LOCK);
+        RedisPoolUtil.del(REDIS_ORDER_LOCK);
     }
-
 }
 
