@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="39ad7905-c9b5-452a-b795-a6177b6a3c96" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/distributed/demo/redislock/RedisLockApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/distributed/demo/redislock/RedisLockApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/distributed/demo/redislock/task/OrderTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/distributed/demo/redislock/task/OrderTask.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -31,21 +30,21 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="14" />
+          <entry key="java" value="15" />
           <entry key="properties" value="4" />
           <entry key="xml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="14" />
+          <entry key="JAVA" value="15" />
           <entry key="Properties" value="4" />
           <entry key="XML" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="1219" />
+          <entry key="java" value="1399" />
           <entry key="properties" value="126" />
           <entry key="txt" value="4" />
           <entry key="xml" value="4" />
@@ -53,7 +52,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1219" />
+          <entry key="JAVA" value="1399" />
           <entry key="PLAIN_TEXT" value="4" />
           <entry key="Properties" value="126" />
           <entry key="XML" value="4" />
@@ -63,11 +62,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/distributed/demo/redislock/common/RedisPool.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -120,11 +114,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/distributed/demo/redislock/task/OrderTask.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="381">
-              <caret line="49" column="44" selection-start-line="49" selection-start-column="44" selection-end-line="49" selection-end-column="44" />
+            <state relative-caret-position="274">
+              <caret line="44" column="59" selection-start-line="44" selection-start-column="59" selection-end-line="44" selection-end-column="59" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-context/5.0.10.RELEASE/spring-context-5.0.10.RELEASE-sources.jar!/org/springframework/scheduling/support/ScheduledMethodRunnable.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="248">
+              <caret line="90" selection-start-line="90" selection-end-line="90" />
             </state>
           </provider>
         </entry>
@@ -221,10 +224,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1" />
-    <option name="y" value="12" />
-    <option name="width" value="1540" />
-    <option name="height" value="978" />
+    <option name="x" value="12" />
+    <option name="y" value="2" />
+    <option name="width" value="1529" />
+    <option name="height" value="1017" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -721,14 +724,15 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="ExpandSpringBootJavaOptionsPanel" value="true" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542611604313" />
-    <property name="last_opened_file_path" value="D:/installed/Git/bin/git.exe" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542613537877" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../servicess" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Project" />
@@ -772,6 +776,8 @@
     <configuration name="RedisLockApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="redis-lock" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.distributed.demo.redislock.RedisLockApplication" />
+      <option name="VM_PARAMETERS" value="-Dserver.port=8000" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -797,7 +803,7 @@
       <option name="presentableId" value="Default" />
       <updated>1542536451441</updated>
       <workItem from="1542536457703" duration="4384000" />
-      <workItem from="1542597156633" duration="6844000" />
+      <workItem from="1542597156633" duration="8743000" />
     </task>
     <task id="LOCAL-00001" summary="kfdk">
       <created>1542539179323</created>
@@ -810,13 +816,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11228000" />
+    <option name="totallyTimeSpent" value="13127000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1" y="10" width="1232" height="782" extended-state="0" />
+    <frame x="10" y="2" width="1223" height="813" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29982963" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.054077253" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -826,13 +832,13 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.13258786" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.23896499" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.22204472" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Spring" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.33431086" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.33386582" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.329429" />
       <window_info anchor="bottom" id="Problems" order="11" />
@@ -948,10 +954,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-context/5.0.10.RELEASE/spring-context-5.0.10.RELEASE-sources.jar!/org/springframework/scheduling/support/ScheduledMethodRunnable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="90" selection-start-line="90" selection-end-line="90" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/distributed/demo/redislock/task/OrderTask.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="49" column="44" selection-start-line="49" selection-start-column="44" selection-end-line="49" selection-end-column="44" />
+        <state relative-caret-position="274">
+          <caret line="44" column="59" selection-start-line="44" selection-start-column="59" selection-end-line="44" selection-end-column="59" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

@@ -3,6 +3,7 @@ package com.distributed.demo.redislock.task;
 import com.distributed.demo.redislock.service.OrderService;
 import com.distributed.demo.redislock.utils.RedisPoolUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -25,7 +26,7 @@ public class OrderTask {
     @Autowired
     private OrderService orderService;
 
-    @Scheduled(cron="0/1 * * * * ?")
+    @Scheduled(cron="0/10 * * * * ?")
     public void doTask() {
         System.out.println("执行订单关闭任务开始");
         Long result = RedisPoolUtil.setnx(REDIS_ORDER_LOCK, String.valueOf(System.currentTimeMillis() + timeOut));
@@ -33,6 +34,18 @@ public class OrderTask {
             // 执行关闭订单业务操作
             closeOrderTask(REDIS_ORDER_LOCK);
         } else {
+            // 获取到超时时间
+            String timeOutStr = RedisPoolUtil.get(REDIS_ORDER_LOCK);
+            if (timeOutStr != null && System.currentTimeMillis() > Long.parseLong(timeOutStr)) {
+                String oldTimeStr = RedisPoolUtil.getSet(REDIS_ORDER_LOCK, String.valueOf(System.currentTimeMillis() + timeOut));
+                if (oldTimeStr == null || StringUtils.equals(timeOutStr, oldTimeStr)) {
+                    // 执行关闭订单业务操作
+                    closeOrderTask(REDIS_ORDER_LOCK);
+                } else {
+                    log.info("没有获取到锁{}", REDIS_ORDER_LOCK);
+                }
+
+            }
             log.info("没有获取到锁{}", REDIS_ORDER_LOCK);
         }
 
